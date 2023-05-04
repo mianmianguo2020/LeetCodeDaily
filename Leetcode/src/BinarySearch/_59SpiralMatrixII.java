@@ -14,14 +14,12 @@ public class _59SpiralMatrixII {
         int startRow = 0, endRow = n - 1;
         int startCol = 0, endCol = n - 1;
 
-        while (startRow <= endRow && startCol <= endCol) { //这个条件来保证当前层存在,至少存在一个元素
-            // 模拟上侧从左到右;走到最后一Col |
+        while (startRow <= endRow && startCol <= endCol) { 
             for (int col = startCol; col <= endCol; col++) {
                 res[startRow][col] = count++;
             }
             print(n, res);
 
-            // 模拟右侧从上到下,走到最后一Row -   如果只有一个元素,只有一行 Row 不会进入
             for (int row = startRow + 1; row <= endRow; row++) {
                 res[row][endCol] = count++;
             }
@@ -29,14 +27,12 @@ public class _59SpiralMatrixII {
             print(n, res);
 
             if (startRow < endRow && startCol < endCol) {
-                // 模拟下侧从右到左
-                for (int col = endCol - 1; col > startCol; col--) { //开始点不在第一个col | 上面
+                for (int col = endCol - 1; col > startCol; col--) { 
                     res[endRow][col] = count++;
                 }
 
                 print(n, res);
-                // 模拟左侧从下到上
-                for (int row = endRow; row > startRow; row--) { //开始点不在第一row上面 -
+                for (int row = endRow; row > startRow; row--) { 
                     res[row][startCol] = count++;
                 }
                 print(n, res);
@@ -58,15 +54,5 @@ public class _59SpiralMatrixII {
             }
             System.out.println();
         }
-    }
-
-    public static void main(String[] args) {
-        _59SpiralMatrixII solution = new _59SpiralMatrixII();
-//        int n = 3;
-//        int n = 1;
-//        int n = 2;
-        int n = 2;
-        int[][] matrix = solution.generateMatrix(n);
-        solution.print(n, matrix);
     }
 }
